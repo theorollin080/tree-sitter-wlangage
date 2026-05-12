@@ -1,0 +1,168 @@
+================================================================================
+Variable declaration (French)
+================================================================================
+
+LOCAL sNom EST UNE CHAÎNE
+GLOBAL nAge EST UN ENTIER = 25
+LOCAL bActif EST UN BOOLÉEN = VRAI
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_declaration (scope_modifier) (identifier) (primitive_type))
+  (variable_declaration (scope_modifier) (identifier) (primitive_type) (integer_literal))
+  (variable_declaration (scope_modifier) (identifier) (primitive_type) (boolean_literal)))
+
+================================================================================
+Variable declaration (English)
+================================================================================
+
+LOCAL sName IS STRING
+GLOBAL nAge IS INT = 25
+LOCAL bActive IS BOOLEAN = TRUE
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (variable_declaration (scope_modifier) (identifier) (primitive_type))
+  (variable_declaration (scope_modifier) (identifier) (primitive_type) (integer_literal))
+  (variable_declaration (scope_modifier) (identifier) (primitive_type) (boolean_literal)))
+
+================================================================================
+If statement (French)
+================================================================================
+
+SI nAge > 18 ALORS
+  Info("Majeur")
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (binary_expression (identifier) (integer_literal))
+    (expression_statement (function_call (identifier) (argument_list (string_literal))))))
+
+================================================================================
+If statement (English)
+================================================================================
+
+IF nAge > 18 THEN
+  Info("Major")
+END
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (if_statement
+    (binary_expression (identifier) (integer_literal))
+    (expression_statement (function_call (identifier) (argument_list (string_literal))))))
+
+================================================================================
+For loop
+================================================================================
+
+POUR i = 1 À 10
+  Trace(i)
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (for_statement
+    (identifier)
+    (integer_literal)
+    (integer_literal)
+    (expression_statement (function_call (identifier) (argument_list (identifier))))))
+
+================================================================================
+Procedure declaration
+================================================================================
+
+PROCÉDURE MaProcédure(sNom EST UNE CHAÎNE, nAge EST UN ENTIER)
+  Info(sNom)
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (procedure_declaration
+    (identifier)
+    (parameter_list
+      (parameter (identifier) (primitive_type))
+      (parameter (identifier) (primitive_type)))
+    (expression_statement (function_call (identifier) (argument_list (identifier))))))
+
+================================================================================
+Function declaration
+================================================================================
+
+FONCTION Additionne(nA EST UN ENTIER, nB EST UN ENTIER) : ENTIER
+  RETOUR nA + nB
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter_list
+      (parameter (identifier) (primitive_type))
+      (parameter (identifier) (primitive_type)))
+    (primitive_type)
+    (return_statement (binary_expression (identifier) (identifier)))))
+
+================================================================================
+Class declaration
+================================================================================
+
+CLASSE Personne
+  PUBLIC :
+    sNom EST UNE CHAÎNE
+    nAge EST UN ENTIER
+
+  CONSTRUCTEUR(sN EST UNE CHAÎNE, nA EST UN ENTIER)
+    sNom = sN
+    nAge = nA
+  FIN
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (class_declaration
+    (identifier)
+    (class_member (access_modifier))
+    (class_member (variable_declaration (identifier) (primitive_type)))
+    (class_member (variable_declaration (identifier) (primitive_type)))
+    (class_member (constructor_declaration
+      (parameter_list
+        (parameter (identifier) (primitive_type))
+        (parameter (identifier) (primitive_type)))
+      (assignment (identifier) (identifier))
+      (assignment (identifier) (identifier))))))
+
+================================================================================
+Switch statement
+================================================================================
+
+SELON nValeur
+  CAS 1 :
+    Info("Un")
+  CAS 2, 3 :
+    Info("Deux ou trois")
+  AUTRE CAS :
+    Info("Autre")
+FIN
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (switch_statement
+    (identifier)
+    (case_clause (integer_literal)
+      (expression_statement (function_call (identifier) (argument_list (string_literal)))))
+    (case_clause (integer_literal) (integer_literal)
+      (expression_statement (function_call (identifier) (argument_list (string_literal)))))
+    (other_case_clause
+      (expression_statement (function_call (identifier) (argument_list (string_literal)))))))
