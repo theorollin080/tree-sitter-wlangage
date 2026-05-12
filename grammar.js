@@ -288,7 +288,7 @@ module.exports = grammar({
     procedure_declaration: $ => seq(
       optional($.scope_modifier),
       choice(kw('PROCÉDURE'), kw('PROCEDURE')),
-      field('name', $.identifier),
+      field('name', alias($.identifier, $.procedure_name)),
       '(',
       optional($.parameter_list),
       ')',
@@ -300,7 +300,7 @@ module.exports = grammar({
     function_declaration: $ => seq(
       optional($.scope_modifier),
       choice(kw('FONCTION'), kw('FUNCTION')),
-      field('name', $.identifier),
+      field('name', alias($.identifier, $.function_name)),
       '(',
       optional($.parameter_list),
       ')',
@@ -337,7 +337,7 @@ module.exports = grammar({
     // ─── Class ────────────────────────────────────────────────────────────────
     class_declaration: $ => seq(
       choice(kw('CLASSE'), kw('CLASS')),
-      field('name', $.identifier),
+      field('name', alias($.identifier, $.class_name)),
       optional(seq(
         choice(kw('HÉRITE'), kw('INHERITS'), kw('EXTENDS')),
         field('parent', $.identifier),
